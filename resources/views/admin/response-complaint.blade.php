@@ -85,7 +85,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                                 </tbody>
                                 @if (Session::has('deleteComplaint'))
                                     <div class="alert alert-danger alert-lg"> {{ Session::get('deleteComplaint') }}</div>

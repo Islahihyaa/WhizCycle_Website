@@ -99,14 +99,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard" data-bs-target="#collapseHome">
+        <a class="nav-link collapsed" href="dashboard">
           <i class="bi bi-house"></i>
           <span>Beranda</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="order" data-bs-target="#collapseOrder">
+        <a class="nav-link collapsed" href="order">
           <i class="bi bi-truck"></i>
           <span>Setoran Sampah</span>
         </a>
@@ -137,6 +137,20 @@
         <a class="nav-link collapsed" href="response-complaint">
           <i class="bi bi-headset"></i>
           <span>Customer Service</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="manage-vehicles">
+          <i class="bi bi-truck"></i>
+          <span>Kelola Kendaraan</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="manage-driver">
+          <i class="bi bi-person-walking"></i>
+          <span>Kelola Driver</span>
         </a>
       </li>
     </ul>

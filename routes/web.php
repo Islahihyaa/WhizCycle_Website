@@ -16,11 +16,10 @@ Route::middleware(AuthenticatingMiddleware::class)->group(function () {
     Route::get('register', [AuthController::class, 'register']);
     Route::post('register', [AuthController::class, 'registration']);
 });
-Route::get('logout', [AuthController::class, 'logout']);
 
+Route::get('logout', [AuthController::class, 'logout']);
 Route::get('home', [UserController::class, 'getHome']);
 Route::get('dashboard', [AdminController::class, 'getDashboard']);
-
 
 //* End Authentication
 
@@ -58,5 +57,21 @@ Route::middleware(OnlyCustomer::class)->group(function () {
 --------------------------------------------------------------*/
 
 Route::middleware(OnlyAdmin::class)->group(function () {
+    //* Customer Sercice 
     Route::get('response-complaint', [AdminController::class, 'getResponseComplaint']);
+    //* End Customer Sercice
+    
+    //* Kelola Kendaraan
+    Route::get('manage-vehicles', [AdminController::class, 'getManageVehicle']);
+    Route::put('manage-vehicles/{vehicle_id}', [AdminController::class, 'updateStatusVehicle'])->name('status-vehicle.update');
+    Route::get('add-vehicles', [AdminController::class, 'getAddVehicle']);
+    Route::post('add-vehicles', [AdminController::class, 'submitAddVehicle']);
+    Route::get('manage-vehicles/{vehicle_id}', [AdminController::class, 'deleteVehicle'])->name('data-vehicle.delete');
+    //* End Kelola Kendaraan
+
+
+
+
+
+
 });

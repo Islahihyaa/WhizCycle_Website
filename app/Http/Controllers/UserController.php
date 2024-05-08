@@ -119,8 +119,6 @@ class UserController extends Controller
         if($deleteRiwayat) {
             Session::flash('deleteRiwayat','Data Deleted Succesfully');
             return redirect('riwayat');
-        } else {
-            dd($deleteRiwayat);
         }
 
     }
