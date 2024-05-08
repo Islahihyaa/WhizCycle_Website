@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Models\Vehicle;
+use App\Models\Driver;
 use Session;
 
 class AdminController extends Controller
@@ -106,6 +107,59 @@ class AdminController extends Controller
         } else {
             Session::flash('failDeleteVehicle','Data gagal dihapus');
             return redirect('manage-vehicles');
+        }
+
+    }
+
+    public function getManageDriver()
+    {
+        $data_driver = Driver::all();
+        return view('admin.manage-driver', compact('data_driver'));
+    }
+
+    public function getAddDriver()
+    {
+        $data_vehicle = Vehicle::all();
+        return view('admin.add-driver', compact('data_vehicle'));
+    }
+
+    public function submitAddDriver(Request $request)
+    {       
+        $request->validate([
+            'name_driver' => 'required',
+            'phoneNo_driver' => 'required',
+            'license_number' => 'required',
+            'vehicle_id' => 'required',
+        ]);
+
+        $createAddDriver = Driver::create([
+            'name_driver' => $request->input('name_driver'),
+            'phoneNo_driver'=> $request->input('phoneNo_driver'),
+            'license_number' => $request->input('license_number'),
+            'vehicle_id' => $request->input('vehicle_id'),
+        ]);
+
+
+        if($createAddDriver) {
+            Session::flash('status','Data Driver Berhasil Ditambahkan');
+            return redirect('add-driver');
+        } else { 
+            Session::flash('notSetDataMessage', 'Data Driver Gagal Ditambahkan');
+            return redirect('add-driver');
+        }
+    }
+
+    public function deleteDriver($driver_id)
+    {
+        $deleteDriver = Driver::find($driver_id);
+        $deleteDriver->delete();
+        
+        if($deleteDriver) {
+            Session::flash('successDeleteDriver','Data berhasil dihapus');
+            return redirect('manage-driver');
+        } else {
+            Session::flash('failDeleteDriver','Data gagal dihapus');
+            return redirect('manage-driver');
         }
 
     }

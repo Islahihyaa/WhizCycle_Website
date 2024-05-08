@@ -68,6 +68,14 @@ Route::middleware(OnlyAdmin::class)->group(function () {
     Route::post('add-vehicles', [AdminController::class, 'submitAddVehicle']);
     Route::get('manage-vehicles/{vehicle_id}', [AdminController::class, 'deleteVehicle'])->name('data-vehicle.delete');
     //* End Kelola Kendaraan
+    
+    //* Kelola Kendaraan
+    Route::get('manage-driver', [AdminController::class, 'getManageDriver']);
+    Route::get('add-driver', [AdminController::class, 'getAddDriver']);
+    Route::post('add-driver', [AdminController::class, 'submitAddDriver']);
+    Route::get('manage-driver/{driver_id}', [AdminController::class, 'deleteDriver'])->name('data-driver.delete');
+    
+    //* End Kelola Kendaraan
 
 
 
