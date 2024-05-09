@@ -47,8 +47,13 @@ Route::middleware(OnlyCustomer::class)->group(function () {
     Route::post('customer-service', [UserController::class, 'submitComplaint']);
     Route::put('customer-service/{complaint_id}', [AdminController::class, 'updateStatus'])->name('customer-service.update');
     Route::get('complaint-delete/{complaint_id}', [AdminController::class, 'deleteComplaint']);
-
+    
     //* End Customer Sercice 
+    
+    //* Edukasi Lingkungan
+    Route::get('article', [UserController::class, 'getArticle']);
+
+    //* End Edukasi Lingkungan
 });
 
 
@@ -69,15 +74,20 @@ Route::middleware(OnlyAdmin::class)->group(function () {
     Route::get('manage-vehicles/{vehicle_id}', [AdminController::class, 'deleteVehicle'])->name('data-vehicle.delete');
     //* End Kelola Kendaraan
     
-    //* Kelola Kendaraan
+    //* Kelola Driver
     Route::get('manage-driver', [AdminController::class, 'getManageDriver']);
     Route::get('add-driver', [AdminController::class, 'getAddDriver']);
     Route::post('add-driver', [AdminController::class, 'submitAddDriver']);
     Route::get('manage-driver/{driver_id}', [AdminController::class, 'deleteDriver'])->name('data-driver.delete');
+    //* End Kelola Driver
     
-    //* End Kelola Kendaraan
 
+    //* Kelola Artikel
+    Route::get('manage-article', [AdminController::class, 'getArticle']);
+    Route::get('add-article', [AdminController::class, 'getAddArticle']);
+    Route::post('add-article', [AdminController::class, 'submitAddArticle']);
 
+    //* End Kelola Artikel
 
 
 

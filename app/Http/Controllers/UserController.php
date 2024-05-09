@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Complaint;
+use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -126,6 +127,12 @@ class UserController extends Controller
     public function getDetailRiwayat()
     {
         return view('customer.detail-riwayat');
+    }
+
+    public function getArticle()
+    {
+        $data_article = Article::all();
+        return view('customer.show-article', compact('data_article'));
     }
 
     

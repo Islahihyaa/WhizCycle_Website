@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Models\Vehicle;
 use App\Models\Driver;
+use App\Models\Article;
 use Session;
 
 class AdminController extends Controller
@@ -163,4 +164,40 @@ class AdminController extends Controller
         }
 
     }
+
+    public function getArticle()
+    {
+        $data_article = Article::all();
+        return view('admin.manage-article', compact('data_article'));
+    }
+
+    public function getAddArticle()
+    {
+        return view('admin.add-article');
+    }
+
+    public function submitAddArticle(Request $request)
+    {       
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image_article' => 'required',
+        ]);
+
+        $createAddArticle = Article::create([
+            'title' => $request->input('title'),
+            'content'=> $request->input('content'),
+            'image_article' => $request->input('image_article'),
+        ]);
+
+
+        if($createAddArticle) {
+            Session::flash('status','Data Article Berhasil Ditambahkan');
+            return redirect('add-article');
+        } else { 
+            Session::flash('notSetDataMessage', 'Data Article Gagal Ditambahkan');
+            return redirect('add-article');
+        }
+    }
+
 }

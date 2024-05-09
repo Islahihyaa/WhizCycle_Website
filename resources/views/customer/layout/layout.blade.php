@@ -127,7 +127,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="article">
           <i class="bi bi-newspaper"></i>
           <span>Edukasi Lingkungan</span>
         </a>
