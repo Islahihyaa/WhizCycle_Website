@@ -47,9 +47,6 @@
                                         <td scope="row">{{ $data -> status }}</td>
                                         <td scope="row">
                                             <div>
-                                                <a href="detail-riwayat" >
-                                                    <button class="btn-custom">Detail</button>
-                                                </a>
                                                 <a href="{{ url('riwayat-delete/' . $data->schedule_id) }}">
                                                     <i class="bi bi-trash3-fill icon-background delete-icon"></i>
                                                 </a>
