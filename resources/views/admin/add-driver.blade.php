@@ -2,6 +2,8 @@
 
 @section('title', 'Admin WhizCycle')
 
+@section('manage-driver', 'active')
+
 @section('content')
 
     <main id="main" class="main">

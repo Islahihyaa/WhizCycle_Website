@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle | Pesanan')
 
+@section('order', 'active')
+
 @section('content')
 
 <main id="main" class="main">
@@ -17,6 +19,13 @@
                     <div class="card-body">
                     <h5 class="card-title">Biodata</h5>
                     <hr>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p class="text-black">{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
 
                         <!-- Biodata Form Elements -->
                         <form action="order" method="post">
@@ -65,7 +74,7 @@
                                 <div class="col-sm-10">
                                     <select name="category_trash" class="form-select" aria-label="Default select example" required>
                                         <option selected>Organik</option>
-                                        <option value="anorganik">Anorganik</option>
+                                        <option value="Anorganik">Anorganik</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,7 +87,7 @@
                             <div class="row mb-3">
                                 <label for="inputNotes" class="col-sm-2 col-form-label">Catatan</label>
                                 <div class="col-sm-10">
-                                    <input id="inputNotes" class="form-control" type="textarea" name="notes" required>
+                                    <input id="inputNotes" class="form-control" name="notes">
                                 </div>
                             </div>
                     
@@ -95,11 +104,16 @@
                             <div class="row mb-3">
                                 <label for="inputFilePayment" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
                                 <div class="col-sm-10">
-                                    <input id="inputFilePayment" class="form-control" type="file" name="file_payment" require>
+                                    <input id="inputFilePayment" class="form-control" type="file" name="file_payment" accept="image/png, image/jpeg" required>
                                 </div>
                             </div>
 
                             <div class="card-description">
+                                <ul>
+                                    <li class="list-group-item">BNI = 12022222 a.n Islahihya</li>
+                                    <li class="list-group-item">BRI = 12021234 a.n Rico</li>
+                                    <li class="list-group-item">BCA = 12021321 a.n Indah</li>
+                                </ul>
                                 <p>Keterangan Pembayaran : </p>
                                 <ul>
                                     <li class="list-group-item">1. Berat 0 - 5 Kg = Rp 25.000,-</li>

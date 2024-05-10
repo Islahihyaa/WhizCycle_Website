@@ -24,6 +24,7 @@ class User extends Authenticatable
         'address',
         'phoneNo',
         'password',
+        'total_points'
     ];
 
     /**

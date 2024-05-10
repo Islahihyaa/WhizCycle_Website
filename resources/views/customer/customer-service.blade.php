@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle | Customer Service')
 
+@section('customer-service', 'active')
+
 @section('content')
 
 <main id="main" class="main">

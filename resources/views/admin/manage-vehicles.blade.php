@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle | Kelola Kendaran')
 
+@section('manage-vehicles', 'active')
+
 @section('content')
 
 <main id="main" class="main">

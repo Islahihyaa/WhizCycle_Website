@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle')
 
+@section('home', 'active')
+
 @section('content')
 
     <main id="main" class="main">
@@ -34,6 +36,29 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Selamat!</h5>
+                                <h1 class="card-total">{{ $user_data->total_daur_ulang}} Kg</h1>
+                                <p class="card-subtext">Sampah Anda berhasil di daur ulang!</p>
+                                <a href="riwayat" class="card-ref">ketuk untuk lihat riwayatmu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Terima Kasih!</h5>
+                                <h1 class="card-total">{{ $user_data->total_points}} Points</h1>
+                                <p class="card-subtext">Nikmati manfaatnya dengan menukarkan poin Anda!</p>
+                                <a href="redeems-point" class="card-ref">ketuk untuk menukar point</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>             
             </div>
         </section>
 

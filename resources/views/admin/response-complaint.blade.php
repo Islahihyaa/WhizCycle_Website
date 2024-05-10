@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle | Pesanan')
 
+@section('response-complaint', 'active')
+
 @section('content')
 
 <main id="main" class="main">

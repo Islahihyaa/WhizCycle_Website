@@ -35,7 +35,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-      <img src="images/logo.png" alt="logo" width="180" height="60" >
+      <img src="{{ asset('images/logo.png') }}" alt="logo" width="180" height="60" >
   </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">
@@ -54,30 +54,6 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="logout">
                 <i class="bi bi-box-arrow-right"></i>
@@ -99,42 +75,42 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="home" data-bs-target="#collapseHome">
+        <a class="nav-link @yield('home')" href="{{url('/')}}">
           <i class="bi bi-house"></i>
           <span>Beranda</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="order" data-bs-target="#collapseOrder">
+        <a class="nav-link @yield('order')" href="{{url('/order')}}">
           <i class="bi bi-truck"></i>
           <span>Setoran Sampah</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="riwayat">
+        <a class="nav-link @yield('riwayat')" href="{{url('/riwayat')}}">
           <i class="bi bi-clock-history"></i>
           <span>Riwayat</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link @yield('redeems-point')" href="{{url('redeems-point')}}">
           <i class="bi bi-star-fill"></i>
           <span>Tukar Point</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="article">
+        <a class="nav-link @yield('article')" href="{{url('article')}}">
           <i class="bi bi-newspaper"></i>
           <span>Edukasi Lingkungan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="customer-service">
+        <a class="nav-link @yield('customer-service')" href="{{url('customer-service')}}">
           <i class="bi bi-headset"></i>
           <span>Customer Service</span>
         </a>

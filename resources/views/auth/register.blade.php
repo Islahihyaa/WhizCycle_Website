@@ -27,7 +27,7 @@
           @if ($errors->any())
               <div class="alert alert-danger">
                   @foreach ($errors->all() as $error)
-                      <p>{{ $error }}</p>
+                      <p class="text-black">{{ $error }}</p>
                   @endforeach
               </div>
           @endif
@@ -44,6 +44,9 @@
                 </div>
                 <div class="form-group ">
                     <input id="my-input" class="form-control input-lg mb-4" type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group ">
+                    <input id="my-input" class="form-control input-lg mb-4" type="password" name="passwordConfirmation" placeholder="Password" required>
                 </div>
                 <div class="text-end">
                     <button type="submit" name="register" id=""class="btn btn-white input-lg">

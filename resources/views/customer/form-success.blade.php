@@ -2,6 +2,8 @@
 
 @section('title', 'WhizCycle | Pembayaran Berhasil')
 
+@section('order', 'active')
+
 @section('content')
 
 <main id="main" class="main">

@@ -2,14 +2,14 @@
 
 @section('title', 'Admin WhizCycle')
 
-@section('manage-vehicles', 'active')
+@section('redeem-point', 'active')
 
 @section('content')
 
     <main id="main" class="main">
         <!-- Page Content  -->
         <div class="pagetitle">
-            <h1>Kelola Kendaraan</h1>
+            <h1>Kelola Point</h1>
         </div>
 
         <section class="section">
@@ -17,43 +17,40 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                        <h5 class="card-title">Tambah Kendaraan</h5>
+                        <h5 class="card-title">Tambah Rewarder</h5>
                         <hr>
 
-                        <!-- Add Vehicle Form Elements -->
-                        <form method="post">
+                        <!-- Add Rewarder Form Elements -->
+                        <form method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
-                                <label for="inputName" class="col-sm-2 col-form-label">Nama Kendaraan</label>
+                                <label for="inputName" class="col-sm-2 col-form-label">Nama Rewarder</label>
                                 <div class="col-sm-10">
-                                    <input name="name_vehicle" class="form-control" required></input>
+                                    <input name="name_rewarder" class="form-control" type="text" required></input>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Jenis Kendaraan</label>
+                                <label for="inputTitle" class="col-sm-2 col-form-label">Judul Reward</label>
                                 <div class="col-sm-10">
-                                    <select name="category_vehicle" class="form-select" required>
-                                        <option>Kendaraan Roda 2</option>
-                                        <option>Kendaraan Roda 3</option>
-                                        <option>Kendaraan Roda 4</option>
-                                    </select>
+                                    <input name="title_rewarder" class="form-control" type="text" required></input>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputDescription" class="col-sm-2 col-form-label">Deskripsi</label>
+                                <label for="inputPoint" class="col-sm-2 col-form-label">Jumlah Point</label>
                                 <div class="col-sm-10">
-                                    <textarea name="description_vehicle" class="form-control" row="3" required></textarea>
+                                    <input name="point_rewarder" class="form-control" type="number" required></input>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Status Kendaraan</label>
+                                <label for="inputDescription" class="col-sm-2 col-form-label">Keterangan</label>
                                 <div class="col-sm-10">
-                                    <select name="status_vehicle" class="form-select" required>
-                                        <option>Sudah Baik</option>
-                                        <option>Butuh Perbaikan</option>
-                                        <option>Sedang Dalam Perbaikan</option>
-                                        <option>Tidak Dapat Digunakan</option>
-                                    </select>
+                                    <textarea name="description_rewarder" class="form-control" rows="10" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputLogo" class="col-sm-2 col-form-label">Logo</label>
+                                <div class="col-sm-10">
+                                    <input name="logo_rewarder" class="form-control" type="file" accept="image/png, image/jpeg" required></input>
                                 </div>
                             </div>
                             <div class="text-end">

@@ -2,14 +2,14 @@
 
 @section('title', 'WhizCycle | Kelola Kendaran')
 
-@section('manage-driver', 'active')
+@section('manage-order', 'active')
 
 @section('content')
 
 <main id="main" class="main">
 
     <div class="pagetitle">
-    <h1>Kelola Driver</h1>
+    <h1>Kelola Order</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -17,36 +17,34 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Data Driver</h5>
+                        <h5 class="card-title">Data Order Customer</h5>
                         <hr>
-                        <div class="text-start my-5">
-                            <a href ="add-driver" name="add-driver" class="btn-custom"><i class="bi bi-plus-circle"></i><span class="m-2">Tambah Driver</span></a>
-                        </div>
-
                         <div class="col">
                             <table class="table datatable">
                             <thead class="table-light">
                                 <tr>
-                                    <th>ID Driver</th>
-                                    <th>Nama</th>
-                                    <th>Nomor Telephone</th>
-                                    <th>Nomor Lisensi</th>
-                                    <th>Kendaraan</th>
+                                    <th>Nomor</th>
+                                    <th>Nama Customer</th>
+                                    <th>Tanggal Penjemputan</th>
+                                    <th>Kategori Sampah</th>
+                                    <th>Berat</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach ($data_driver as $data)
+                                @foreach ($data_order as $data)
                                     <tr>
-                                        <td scope="row">{{ $data -> driver_id }}</td>
-                                        <td scope="row">{{ $data -> name_driver}}</td>
-                                        <td scope="row">{{ $data -> phoneNo_driver}}</td>
-                                        <td scope="row">{{ $data -> license_number }}</td>
-                                        <td scope="row">{{ $data -> vehicle -> name_vehicle }}</td>
+                                        <td scope="row">{{ $loop -> iteration }}</td>
+                                        <td scope="row">{{ $data -> user -> name }}</td>
+                                        <td scope="row">{{ $data -> pickup_date }} / {{ $data -> pickup_time }}</td>
+                                        <td scope="row">{{ $data -> category_trash }}</td>
+                                        <td scope="row">{{ $data -> amount }} Kg</td>
+                                        <td scope="row">{{ $data -> status }}</td>
                                         <td scope="row">
-                                            <a href="{{ route('data-driver.delete', ['driver_id' => $data->driver_id]) }}">
-                                                <i class="bi bi-trash3-fill icon-background delete-icon"></i>
+                                            <a href="{{ route('manage-order-detail', ['schedule_id' => $data->schedule_id]) }}">
+                                            <button class="btn-custom">Detail</button>
                                             </a>
                                         </td>
                                     </tr>
@@ -60,8 +58,6 @@
                                 @endif
                             </table>
                         </div>
-                    
-                    
                     </div>
                 
                 </div>

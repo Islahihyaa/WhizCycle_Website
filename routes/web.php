@@ -19,7 +19,7 @@ Route::middleware(AuthenticatingMiddleware::class)->group(function () {
 
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('home', [UserController::class, 'getHome']);
-Route::get('dashboard', [AdminController::class, 'getDashboard']);
+Route::get('/dashboard', [AdminController::class, 'getDashboard']);
 
 //* End Authentication
 
@@ -35,10 +35,12 @@ Route::middleware(OnlyCustomer::class)->group(function () {
     Route::get('riwayat', [UserController::class, 'getDataRiwayat']);
     Route::get('riwayat-delete/{schedule_id}', [UserController::class, 'deleteRiwayat']);
     Route::get('detail-riwayat', [UserController::class, 'getDetailRiwayat']);
-
+    
     //* End History
-
+    
     //* Redeems Points
+    Route::get('redeems-point', [UserController::class, 'getTukarPoint']);
+    Route::put('redeems-point/{redeem_id}', [UserController::class, 'submitTukarPoint'])->name('redeems-point.redeems');
 
     //* End Redeems Points
 
@@ -47,12 +49,11 @@ Route::middleware(OnlyCustomer::class)->group(function () {
     Route::post('customer-service', [UserController::class, 'submitComplaint']);
     Route::put('customer-service/{complaint_id}', [AdminController::class, 'updateStatus'])->name('customer-service.update');
     Route::get('complaint-delete/{complaint_id}', [AdminController::class, 'deleteComplaint']);
-    
     //* End Customer Sercice 
     
     //* Edukasi Lingkungan
     Route::get('article', [UserController::class, 'getArticle']);
-
+    Route::get('/read-article/{article_id}', [UserController::class, 'getDetailArticle'])->name('read-article');
     //* End Edukasi Lingkungan
 });
 
@@ -83,13 +84,26 @@ Route::middleware(OnlyAdmin::class)->group(function () {
     
 
     //* Kelola Artikel
-    Route::get('manage-article', [AdminController::class, 'getArticle']);
+    Route::get('/manage-article', [AdminController::class, 'getArticle']);
+
     Route::get('add-article', [AdminController::class, 'getAddArticle']);
+
     Route::post('add-article', [AdminController::class, 'submitAddArticle']);
 
+    Route::get('article/{article_id}/detail', [AdminController::class, 'show_detail_article']); 
+    
+    Route::delete('remove-article/{article_id}', [AdminController::class, 'destroy_article']);
+    
     //* End Kelola Artikel
-
-
-
+    
+    Route::get('manage-order', [AdminController::class, 'getManageOrder']);
+    Route::get('manage-order-detail/{schedule_id}', [AdminController::class, 'detailOrder'])->name('manage-order-detail');
+    Route::put('manage-order-detail/{schedule_id}', [AdminController::class, 'submitUpdateOrder']);
+    
+    
+    Route::get('manage-points', [AdminController::class, 'getManagePoint']);
+    Route::get('add-rewarder', [AdminController::class, 'getAddRewarder']);
+    Route::post('add-rewarder', [AdminController::class, 'submitAddRewarder']);
+    Route::get('manage-points/{redeem_id}', [AdminController::class, 'deleteRewarder'])->name('delete-rewarder.delete');
 
 });

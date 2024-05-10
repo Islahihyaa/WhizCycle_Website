@@ -2,6 +2,8 @@
 
 @section('title', 'Admin WhizCycle')
 
+@section('manage-article', 'active')
+
 @section('content')
 
     <main id="main" class="main">
@@ -19,7 +21,7 @@
                         <hr>
 
                         <!-- Add Article Form Elements -->
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputTitle" class="col-sm-2 col-form-label">Judul Artikel</label>

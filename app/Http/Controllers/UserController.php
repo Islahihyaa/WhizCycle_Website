@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Complaint;
 use App\Models\Article;
+use App\Models\Rewarder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -14,7 +15,8 @@ class UserController extends Controller
 {
     public function getHome()
     {
-        return view('customer.index');
+        $user_data = Auth::user();
+        return view('customer.index', compact('user_data'));
     }
 
     public function createOrder()
@@ -134,6 +136,41 @@ class UserController extends Controller
         $data_article = Article::all();
         return view('customer.show-article', compact('data_article'));
     }
+
+    public function getDetailArticle(Request $request)
+    {
+        $data_article = Article::find($request->article_id);
+        return view('customer.detail-article', [
+            'article' => $data_article
+        ]);
+    }
+
+    public function getTukarPoint()
+    {
+        $data_point = Rewarder::all();
+        $user_data = Auth::user();
+        return view('customer.redeem-point', compact('data_point', 'user_data'));
+    }
+
+    public function submitTukarPoint($redeem_id)
+    {
+        $rewarder = Rewarder::find($redeem_id);
+    
+        if (!$rewarder) {
+            return back()->with('error', 'Rewarder tidak ditemukan.');
+        }
+
+        $user = Auth::user();
+
+        if ($user->total_points >= $rewarder->point_rewarder) {
+            $user->total_points -= $rewarder->point_rewarder;
+            $user->save();
+
+            return back()->with('success', 'Berhasil melakukan redeem point.');
+        } else {
+            return back()->with('error', 'Point Anda kurang.');
+        }
+        }
 
     
 }
